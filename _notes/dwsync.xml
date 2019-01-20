@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
 <file name="signup.html" server="F:/wamp64/www/" local="131924672454605298" remote="131924672450000000" Dst="1" />
-<file name="signup.js" server="F:/wamp64/www/" local="131924659090124948" remote="131924659090000000" Dst="1" />
-<file name="signin.js" server="F:/wamp64/www/" local="131924666574085165" remote="131924666570000000" Dst="1" />
 <file name="signin.html" server="F:/wamp64/www/" local="131924672410000000" remote="131924672410000000" Dst="1" />
-<file name="signin.html" server="owlcoin.co.uk//wamp64/www/Dev/" local="131924672410000000" remote="131924680800000000" Dst="1" />
-<file name="signin.js" server="owlcoin.co.uk//wamp64/www/Dev/" local="131924666574085165" remote="131924680800000000" Dst="1" />
-<file name="profile.js" server="owlcoin.co.uk//wamp64/www/Dev/" local="131924687096835356" remote="131924686800000000" Dst="1" />
-<file name="profile.html" server="owlcoin.co.uk//wamp64/www/Dev/" local="131924681731346602" remote="131924682600000000" Dst="1" />
-<file name="signup.html" server="owlcoin.co.uk//wamp64/www/Dev/" local="131924672454605298" remote="131924682600000000" Dst="1" />
+<file name="signin.html" server="owlcoin.co.uk//wamp64/www/Dev/" local="131924807638794587" remote="131924815200000000" Dst="1" />
+<file name="profile.js" server="owlcoin.co.uk//wamp64/www/Dev/" local="131924837322633704" remote="131924836800000000" Dst="1" />
+<file name="profile.html" server="owlcoin.co.uk//wamp64/www/Dev/" local="131924823773345900" remote="131924824800000000" Dst="1" />
+<file name="signup.html" server="owlcoin.co.uk//wamp64/www/Dev/" local="131924807549520779" remote="131924815200000000" Dst="1" />
+<file name="login.js" server="owlcoin.co.uk//wamp64/www/Dev/" local="131924817508690787" remote="131924817000000000" Dst="1" />
 </dwsync>

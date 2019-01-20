@@ -1,5 +1,8 @@
 // JavaScript Document
-var AccountDetails,MyCurrencies,MyBots;
+var AccountDetails,
+	MyCurrencies,
+	MyBots;
+
 LoadProfile();
 
 function LoadProfile(){
@@ -12,6 +15,7 @@ function LoadProfile(){
 				GetCurrencies();
 				GetBots();
 			}
+			else { document.location.href="./signin.html"; }
 		});
 	});
 }
@@ -23,6 +27,7 @@ function GetCurrencies(){
 		RespData.json().then(function(JRespData){
 			if (JRespData["Code"]==200){
 				MyCurrencies=JRespData["Data"];
+				document.getElementById("CurrencyDetails").innerHTML=JSON.stringify(MyCurrencies);
 			}
 		});
 	});
@@ -35,6 +40,28 @@ function GetBots(){
 		RespData.json().then(function(JRespData){
 			if (JRespData["Code"]==200){
 				MyBots=JRespData["Data"];
+			}
+		});
+	});
+}
+
+function SignOut(){
+	document.cookie="";
+	document.location.href="./signin.html";
+}
+
+function DeleteAccount(){
+	if (window.confirm("Are you sure you want to delete your account?")) {
+	} else { return; }
+	fetch("https://owlcoin.co.uk/webapi/login/delete",
+		  {method: 'post',
+		   headers:[["AccessToken",document.cookie]]}).then(function(RespData){
+		RespData.json().then(function(JRespData){
+			if (JRespData["Code"]==200){
+				document.location.href="./signup.html"
+			}
+			else {
+				window.alert("Failed to delete account!");
 			}
 		});
 	});
