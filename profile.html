@@ -5,11 +5,20 @@
 <title>Untitled Document</title>
 </head>
 	<script src="profile.js"></script>
+	<script src="currency.js"></script>
+	<script src="bot.js"></script>
 <body id="Body">
 	<div>
 		<input type="submit" value="Sign Out" id="SignOut" onClick="SignOut()">
 		<input type="submit" value="Delete Account" id="DeleteAccount" onClick="DeleteAccount()">
 	</div>
-	<p id="CurrencyDetails"></p>
+	<div id="CurrencyDetails">
+		<p id="CurrencyCount"></p>
+		<input type="submit" value="Create Currency" id="CreateCurrency" onClick="CreateCurrency()">
+	</div>
+	<div id="BotDetails">
+		<p id="BotCount"></p>
+		<input type="submit" value="Create Bot" id="CreateBot" onClick="CreateBot()">
+	</div>
 </body>
 </html>

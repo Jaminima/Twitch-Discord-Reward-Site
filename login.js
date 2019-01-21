@@ -17,7 +17,7 @@ function Signin(){
 				document.cookie=JRespData["Data"]["AccessToken"];
 				document.location.href="./profile.html";
 			}
-			else {document.getElementById("LoginMessage").innerHTML=JRespData["Message"];}
+			else {document.getElementById("LoginMessage").innerHTML=JRespData["Message"].replace("Bad Request, ","");}
 		});
 	});
 }
@@ -37,7 +37,7 @@ function Signup(){
 				document.getElementById("LoginMessage").innerHTML="SignedUp";
 				Signin();
 			}
-			else {document.getElementById("LoginMessage").innerHTML=JRespData["Message"];}
+			else {document.getElementById("LoginMessage").innerHTML=JRespData["Message"].replace("Bad Request, ","");}
 		});
 	});
 }

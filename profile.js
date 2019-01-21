@@ -27,8 +27,9 @@ function GetCurrencies(){
 		RespData.json().then(function(JRespData){
 			if (JRespData["Code"]==200){
 				MyCurrencies=JRespData["Data"];
-				document.getElementById("CurrencyDetails").innerHTML=JSON.stringify(MyCurrencies);
+				document.getElementById("CurrencyCount").innerHTML="You have "+MyCurrencies.length+" Currencies";
 			}
+			else { document.getElementById("CurrencyCount").innerHTML="You dont have any currencies"; }
 		});
 	});
 }
@@ -40,7 +41,9 @@ function GetBots(){
 		RespData.json().then(function(JRespData){
 			if (JRespData["Code"]==200){
 				MyBots=JRespData["Data"];
+				document.getElementById("BotCount").innerHTML="You have "+MyBots.length+" Bots";
 			}
+			else { document.getElementById("BotCount").innerHTML="You dont have any bots"; }
 		});
 	});
 }
