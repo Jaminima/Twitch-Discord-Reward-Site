@@ -1,6 +1,8 @@
 // JavaScript Document
 var UserName,Email,RawPassword;
 
+CheckLoggedin();
+
 function Signin(){
 	UserName=document.getElementById("UsernameField").value;
 	Email=document.getElementById("EmailField").value;
@@ -38,6 +40,19 @@ function Signup(){
 				Signin();
 			}
 			else {document.getElementById("LoginMessage").innerHTML=JRespData["Message"].replace("Bad Request, ","");}
+		});
+	});
+}
+
+function CheckLoggedin(){
+	fetch("https://owlcoin.co.uk/webapi/login",
+		  {method: 'get',
+		   headers:[["AccessToken",document.cookie]]}).then(function(RespData){
+		RespData.json().then(function(JRespData){
+			if (JRespData["Code"]==200){
+				document.location.href="./profile.html";
+			}
+			else { }
 		});
 	});
 }

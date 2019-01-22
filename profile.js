@@ -6,46 +6,82 @@ var AccountDetails,
 LoadProfile();
 
 function LoadProfile(){
-	fetch("https://owlcoin.co.uk/webapi/login",
-		  {method: 'get',
-		   headers:[["AccessToken",document.cookie]]}).then(function(RespData){
-		RespData.json().then(function(JRespData){
-			if (JRespData["Code"]==200){
-				AccountDetails=JRespData["Data"];
-				GetCurrencies();
-				GetBots();
+	GetProfile().then(
+		function (AccountData){
+			AccountDetails = AccountData;
+			GetCurrencies().then(
+				function(CurrencyData){
+					MyCurrencies=CurrencyData;
+					if (MyCurrencies!=null){
+						document.getElementById("CurrencyCount").innerHTML="You have "+MyCurrencies.length+" Currencies";
+						document.getElementById("CurrencySet").innerHTML="";
+						MyCurrencies.forEach(WriteCurrencyItem);
+					}
+					else { document.getElementById("CurrencyCount").innerHTML="You dont have any currencies"; }
+				}
+			);
+			GetBots().then(
+				function(BotData){
+					MyBots=BotData;
+					if (MyBots!=null){
+						document.getElementById("BotCount").innerHTML="You have "+MyBots.length+" Bots";
+						document.getElementById("BotSet").innerHTML="";
+						MyBots.forEach(WriteBotItem);
+					}
+					else { document.getElementById("BotCount").innerHTML="You dont have any bots"; }
+				}
+			);
+		}
+	);
+}
+
+function DoCreateBot(){
+	CreateBot().then(
+		function(BotData){
+			if (BotData!=null){
+				LoadProfile();
 			}
-			else { document.location.href="./signin.html"; }
-		});
+			else { window.alert("Failed to create bot!"); }
+		}
+	);
+}
+
+function DoCreateCurrency(){
+	CreateCurrency().then(
+		function(CurrencyData){
+			if (CurrencyData!=null){
+				LoadProfile();
+			}
+			else { window.alert("Failed to create currency!"); }
+		}
+	);
+}
+
+function GetProfile(){
+	return fetch("https://owlcoin.co.uk/webapi/login", {
+		method: 'get',
+		headers: [
+			["AccessToken",document.cookie]
+		]
+	}).then(function (RespData) {
+		return RespData.json();
+	}).then(function (JRespData) {
+		if (JRespData["Code"] == 200) {
+			return JRespData["Data"];
+		} else {
+			return null;
+		}
 	});
 }
 
-function GetCurrencies(){
-	fetch("https://owlcoin.co.uk/webapi/currency",
-		  {method: 'get',
-		   headers:[["LoginID",AccountDetails["ID"]]]}).then(function(RespData){
-		RespData.json().then(function(JRespData){
-			if (JRespData["Code"]==200){
-				MyCurrencies=JRespData["Data"];
-				document.getElementById("CurrencyCount").innerHTML="You have "+MyCurrencies.length+" Currencies";
-			}
-			else { document.getElementById("CurrencyCount").innerHTML="You dont have any currencies"; }
-		});
-	});
+function WriteCurrencyItem(item){
+	document.getElementById("CurrencySet").innerHTML+="<a href='./Currency.html?ID="+item["ID"]+"'>"+item["CommandConfig"]["CurrencyName"]+"</a><br>";
 }
 
-function GetBots(){
-	fetch("https://owlcoin.co.uk/webapi/bot",
-		  {method: 'get',
-		   headers:[["LoginID",AccountDetails["ID"]]]}).then(function(RespData){
-		RespData.json().then(function(JRespData){
-			if (JRespData["Code"]==200){
-				MyBots=JRespData["Data"];
-				document.getElementById("BotCount").innerHTML="You have "+MyBots.length+" Bots";
-			}
-			else { document.getElementById("BotCount").innerHTML="You dont have any bots"; }
-		});
-	});
+function WriteBotItem(item){
+	var Name=item["BotName"];
+	if (Name==""){Name=item["ID"];}
+	document.getElementById("BotSet").innerHTML+="<a href='./Bot.html?ID="+item["ID"]+"'>"+Name+"</a><br>";
 }
 
 function SignOut(){
@@ -55,17 +91,31 @@ function SignOut(){
 
 function DeleteAccount(){
 	if (window.confirm("Are you sure you want to delete your account?")) {
-	} else { return; }
-	fetch("https://owlcoin.co.uk/webapi/login/delete",
-		  {method: 'post',
-		   headers:[["AccessToken",document.cookie]]}).then(function(RespData){
-		RespData.json().then(function(JRespData){
-			if (JRespData["Code"]==200){
-				document.location.href="./signup.html"
+		SendDeleteAccount().then(
+			function(DeleteData){
+				if (DeleteData){
+					document.location.href="./signup.html";
+				}
+				else { window.alert("Failed to delete account!"); }
 			}
-			else {
-				window.alert("Failed to delete account!");
-			}
-		});
+		);
+	} 
+	else { return; }
+}
+
+function SendDeleteAccount(){
+	return fetch("https://owlcoin.co.uk/webapi/login/delete", {
+		method: 'post',
+		headers: [
+			["AccessToken",document.cookie]
+		]
+	}).then(function (RespData) {
+		return RespData.json();
+	}).then(function (JRespData) {
+		if (JRespData["Code"] == 200) {
+			return true;
+		} else {
+			return false;
+		}
 	});
 }
