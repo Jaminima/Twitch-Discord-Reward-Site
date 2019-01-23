@@ -3,7 +3,20 @@ var AccountDetails,
 	MyCurrencies,
 	MyBots;
 
+CheckLoggedin();
 LoadProfile();
+
+function CheckLoggedin(){
+	fetch("https://owlcoin.co.uk/webapi/login",
+		  {method: 'get',
+		   headers:[["AccessToken",document.cookie]]}).then(function(RespData){
+		RespData.json().then(function(JRespData){
+			if (JRespData["Code"]==200){
+			}
+			else { document.location.href="./signin.html"; }
+		});
+	});
+}
 
 function LoadProfile(){
 	GetProfile().then(
