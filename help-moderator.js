@@ -16,18 +16,11 @@ function LoadHelp(){
 
 function WriteHelp(){
 	var Prefix=Currency["CommandConfig"]["Prefix"];
-	for (Key in Currency["CommandConfig"]["CommandSetup"]){
-		WriteCommand("",Key,Currency["CommandConfig"]["CommandSetup"][Key]["Commands"],Prefix);
+	for (Key in Currency["CommandConfig"]["CommandSetup"]["Moderator"]){
+		WriteCommand("",Key,Currency["CommandConfig"]["CommandSetup"]["Moderator"][Key]["Commands"],Prefix);
 	}
-	for (Key in Currency["CommandConfig"]["CommandSetup"]["NightBot"]){
-		WriteCommand("NightBot",Key,Currency["CommandConfig"]["CommandSetup"]["NightBot"][Key]["Commands"],Prefix);
-	}
-	var SimpleResponsesElement = document.getElementById("SimpleResponsesCommands");
-	for (Key in Currency["CommandConfig"]["CommandSetup"]["SimpleResponses"]["Commands"]){
-		if (SimpleResponsesElement.innerHTML != "") {
-			SimpleResponsesElement.innerHTML += "<br>";
-		}
-		SimpleResponsesElement.innerHTML+=Prefix+Key;
+	for (Key in Currency["CommandConfig"]["CommandSetup"]["NightBot"]["Moderator"]){
+		WriteCommand("NightBot",Key,Currency["CommandConfig"]["CommandSetup"]["NightBot"]["Moderator"][Key]["Commands"],Prefix);
 	}
 }
 function WriteCommand(PreKey, Key, CommandSet, Prefix) {
@@ -36,7 +29,7 @@ function WriteCommand(PreKey, Key, CommandSet, Prefix) {
 		CommandSet.forEach(
 			function (Text) {
 				if (Element.innerHTML != "") {
-					Element.innerHTML += " ";
+					Element.innerHTML += "<br>";
 				}
 				Element.innerHTML += Prefix + Text;
 			}

@@ -36,7 +36,7 @@ function WriteCommand(PreKey, Key, CommandSet, Prefix) {
 		CommandSet.forEach(
 			function (Text) {
 				if (Element.innerHTML != "") {
-					Element.innerHTML += " ";
+					Element.innerHTML += "<br>";
 				}
 				Element.innerHTML += Prefix + Text;
 			}
