@@ -30,23 +30,6 @@ header ul{
 .header-topbar-item{
 	float: left;
 }
-.header-topbar-item a{ 
-	display: block;
-	text-align: center;
-	line-height: 30px;
-	font-size: 15px;
-	margin-left: 5px;
-	margin-right: 5px;
-	width: 100px;
-	height: 30px;
-	background-color: #575757;
-}
-.header-topbar-item a:link{ 
-	text-decoration: none;
-}
-.header-topbar-item a:hover{
-	background-color: #4CA7BD;
-}
 .header-topbar-item:hover .header-topbar-item-dropdown{
 	display: block;
 }
@@ -71,4 +54,22 @@ header ul{
 }
 .help-table tbody tr{
 	background-color: #3A3A3A;
+}
+
+.DefaultButton{
+	display: block;
+	text-align: center;
+	line-height: 30px;
+	font-size: 15px;
+	margin-left: 5px;
+	margin-right: 5px;
+	width: 100px;
+	height: 30px;
+	background-color: #575757;
+}
+.DefaultButton:link{ 
+	text-decoration: none;
+}
+.DefaultButton:hover{
+	background-color: #4CA7BD;
 }
