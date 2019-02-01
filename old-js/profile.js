@@ -88,13 +88,13 @@ function GetProfile(){
 }
 
 function WriteCurrencyItem(item){
-	document.getElementById("CurrencySet").innerHTML+="<a href='./Currency.html?ID="+item["ID"]+"'>"+item["CommandConfig"]["CurrencyName"]+"</a><br>";
+	document.getElementById("CurrencySet").innerHTML+="<a href='../Currency.html?ID="+item["ID"]+"'>"+item["CommandConfig"]["CurrencyName"]+"</a><br>";
 }
 
 function WriteBotItem(item){
 	var Name=item["BotName"];
 	if (Name==""){Name=item["ID"];}
-	document.getElementById("BotSet").innerHTML+="<a href='./Bot.html?ID="+item["ID"]+"'>"+Name+"</a><br>";
+	document.getElementById("BotSet").innerHTML+="<a href='../Bot.html?ID="+item["ID"]+"'>"+Name+"</a><br>";
 }
 
 function SignOut(){
