@@ -1,41 +1,63 @@
 <!doctype html>
 <html>
-	<head>
-	<link rel="stylesheet" href="../css/main.css">
-	<meta charset="utf-8">
-	<!-- TemplateBeginEditable name="TitleSection" -->
-	<title>Untitled Document</title>
-	<!-- TemplateEndEditable -->
-	</head>
-	<body>
-		<header>
-		  <ul>
-			  <li class="header-topbar-item">
-				  <a class="DefaultButton" style="margin-left: 0px;" href="/index.html">Home</a>
-			  </li>
-			  <li class="header-topbar-item">
-				  <a class="DefaultButton">API</a>
-			    <div class="header-topbar-item-dropdown">
-					  <ul>
-						  <li><a class="DefaultButton" href="/api/learn.html">Learn</a></li>
-						  <li><a class="DefaultButton" href="/api/objects.html">Objects</a></li>
-						  <li><a class="DefaultButton" href="/api/get.html">Get</a></li>
-						  <li><a class="DefaultButton" href="/api/post.html">Post</a></li>
-				    </ul>
-				  </div>
-			  </li>
-			  <li class="header-topbar-item">
-				  <a class="DefaultButton">Example</a>
-			    <div class="header-topbar-item-dropdown">
-					<ul>
-						<li>
-							<a class="DefaultButton">Example</a>
-						</li>
-				  </ul>
-			    </div>
-		    </li>
-		  </ul>
-		</header>
-		<!-- TemplateBeginEditable name="EditRegion2" -->MainBody<!-- TemplateEndEditable -->
-	</body>
+<head>
+<link rel="stylesheet" href="../css/main.css">
+<meta charset="utf-8">
+<!-- TemplateBeginEditable name="TitleSection" -->
+<title>Untitled Document</title>
+<!-- TemplateEndEditable -->
+</head>
+<body>
+<header>
+  <ul class="header-topbar">
+    <li class="header-topbar-item"> <a class="DefaultButton" style="margin-left: 0px;" href="/index.html">Home</a> </li>
+    <li class="header-topbar-item"> <a class="DefaultButton">API</a>
+      <div class="header-topbar-item-dropdown">
+        <ul>
+          <li><a class="DefaultButton" href="/api/learn.html">Learn</a></li>
+          <li><a class="DefaultButton" href="/api/objects.html">Objects</a></li>
+          <li><a class="DefaultButton" href="/api/get.html">Get</a></li>
+          <li><a class="DefaultButton" href="/api/post.html">Post</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="header-topbar-item"> <a class="DefaultButton">Example</a>
+      <div class="header-topbar-item-dropdown">
+        <ul>
+          <li> <a class="DefaultButton">Example</a> </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+  <div style="top: 0px;position: absolute; right: 5px;" id="Profile">
+    <ul class="header-topbar">
+      <li class="header-topbar-item"> <a class="DefaultButton" id="SignUp/Profile" onClick="DrawSignUp()">SignUp</a> </li>
+      <li class="header-topbar-item"> <a class="DefaultButton" id="Login/Logout" onClick="DrawLogin()">Login</a> </li>
+    </ul>
+  </div>
+</header>
+<!-- TemplateBeginEditable name="EditRegion2" -->MainBody<!-- TemplateEndEditable -->
+<div id="Overlay" class="Overlay" onClick="HideOverlay()">
+  <div id="OverlayPanel" class="OverlayPanel" onClick="PanelClicked()">
+	  <div>
+      <label>Username</label><br>
+      <input type="text" id="OverlayUsernameField">
+    </div>
+    <div>
+      <label>Email</label><br>
+      <input type="email" id="OverlayEmailField">
+    </div>
+    <div>
+      <label>Password</label><br>
+      <input type="password" id="OverlayPasswordField">
+    </div>
+	  <div style="overflow: auto;">
+		  <p id="OverlayMessage" style="margin-left: 3px;"></p>
+		  <input type="button" id="OverlayButton" value="Sign In" onClick="Signin()" style="width: 100px;">
+	  </div>
+  </div>
+</div>
+</body>
+<script src="../js/login.js"></script>
+<script src="../js/Page/Template.js"></script>
 </html>
