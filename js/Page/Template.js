@@ -7,7 +7,8 @@ var LoginLogout=document.getElementById("Login/Logout"),
 SetProfileBar();
 
 function SetProfileBar(){
-	GetCurrentLogin(DataFromCookies()["Token"]).then(
+	var CookieData=DataFromCookies();
+	GetCurrentLogin(CookieData["Token"],CookieData["ID"]).then(
 		function(LoginData){
 			if (LoginData!=null){
 				LoginLogout.innerHTML="Logout";

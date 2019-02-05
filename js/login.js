@@ -28,11 +28,12 @@ function SignUp(UserName,Email,RawPassword){
 	});
 }
 
-function GetCurrentLogin(AccessToken){
+function GetCurrentLogin(AccessToken,ID){
 	return fetch("https://owlcoin.co.uk/webapi/login", {
 		method: 'get',
 		headers: [
-			["AccessToken",AccessToken]
+			["AccessToken",AccessToken],
+			["ID",ID]
 		]
 	}).then(function (RespData) {
 		return RespData.json();
