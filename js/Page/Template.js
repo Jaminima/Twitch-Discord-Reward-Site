@@ -26,14 +26,17 @@ function SetProfileBar(){
 	);
 }
 
-function DataFromCookies(){
-	var Dictionary = {};
-	var Cookies=document.cookie.split(";");
-	for (var i=0;i<Cookies.length;i++){
-		var Cookie=Cookies[i].split("=");
-		Dictionary[Cookie[0].replace(" ","")]=Cookie[1];
-	}
-	return Dictionary;
+function PageForceSignedIn(){
+	var CookieData=DataFromCookies();
+	GetCurrentLogin(CookieData["Token"],CookieData["ID"]).then(
+		function(LoginData){
+			if (LoginData!=null){
+			}
+			else {
+				location.href="/";
+			}
+		}
+	);
 }
 
 function HideOverlay(){
@@ -82,8 +85,8 @@ function PerformSignIn(){
 	Login(UserName,Email,RawPassword).then(
 		function(SignInData){
 			if (SignInData["Code"]==200){
-				document.cookie="Token="+SignInData["Data"]["AccessToken"]+";"
-				document.cookie="ID="+SignInData["Data"]["ID"];
+				document.cookie="Token="+SignInData["Data"]["AccessToken"]+";path=/";
+				document.cookie="ID="+SignInData["Data"]["ID"]+";path=/";
 				SetProfileBar();
 				HideOverlay();
 			}
