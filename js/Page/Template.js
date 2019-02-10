@@ -33,7 +33,7 @@ function PageForceSignedIn(){
 			if (LoginData!=null){
 			}
 			else {
-				location.href="/";
+				location.href="/Dev/Pages/";
 			}
 		}
 	);
@@ -97,13 +97,13 @@ function PerformSignIn(){
 
 function PerformLogout(){
 	if (window.confirm("Are you sure you want to sign out?")) {
-		document.cookie="ID=;";
-		document.cookie="Token=;"
+		document.cookie="ID=;path=/";
+		document.cookie="Token=;path=/"
 		document.location.href=".";
 	} 
 	else { return; }
 }
 
 function GotoProfile(){
-
+	document.location.href="/Dev/Pages/profile.html"
 }

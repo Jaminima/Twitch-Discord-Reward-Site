@@ -4,12 +4,12 @@ LoadHelp();
 function LoadHelp(){
 	var CID;
 	CID=new URL(window.location).searchParams.get("ID");
-	if (CID==null){ window.alert("Missing ID in url"); window.location.href="./signin.html"; return null; }
+	if (CID==null){ window.alert("Missing ID in url"); window.location.href="/"; return null; }
 	GetCurrency(CID).then(
 		function(CurrencyData){
 			Currency=CurrencyData;
 			if (Currency!=null){ WriteHelp(); }
-			else { window.alert("Invalid Currency ID"); window.location.href="./signin.html"; return null; }
+			else { window.alert("Invalid Currency ID"); window.location.href="/"; return null; }
 		}
 	);
 }

@@ -1,9 +1,10 @@
 // JavaScript Document
-function CreateBot(){
+function CreateBot(AccessToken,ID){
 	return fetch("https://owlcoin.co.uk/webapi/bot", {
 		method: 'post',
 		headers: [
-			["AccessToken",document.cookie],
+			["AccessToken",AccessToken],
+			["LoginID",ID],
 			["BotName","DefaultName"]
 		]
 	}).then(function (RespData) {
@@ -17,11 +18,11 @@ function CreateBot(){
 	});
 }
 
-function GetBots(){
+function GetBots(LoginID){
 	return fetch("https://owlcoin.co.uk/webapi/bot", {
 		method: 'get',
 		headers: [
-			["LoginID",AccountDetails["ID"]]
+			["LoginID",LoginID]
 		]
 	}).then(function (RespData) {
 		return RespData.json();

@@ -1,9 +1,10 @@
 // JavaScript Document
-function CreateCurrency(){
+function CreateCurrency(AccessToken,ID){
 	return fetch("https://owlcoin.co.uk/webapi/currency", {
 		method: 'post',
 		headers: [
-			["AccessToken",document.cookie]
+			["AccessToken",AccessToken],
+			["LoginID",ID]
 		]
 	}).then(function (RespData) {
 		return RespData.json();
@@ -33,11 +34,11 @@ function GetCurrency(CID){
 	});
 }
 
-function GetCurrencies(){
+function GetCurrencies(LoginID){
 	return fetch("https://owlcoin.co.uk/webapi/currency", {
 		method: 'get',
 		headers: [
-			["LoginID",AccountDetails["ID"]]
+			["LoginID",LoginID]
 		]
 	}).then(function (RespData) {
 		return RespData.json();
